@@ -103,31 +103,7 @@
       transformRequest: transformRequest
     });
 
-        // Add a layer for the marker
-        map.addLayer({
-          'id': 'marker',
-          'type': 'circle',
-          'source': {
-            'type': 'geojson',
-            'data': {
-              'type': 'FeatureCollection',
-              'features': [{
-                'type': 'Feature',
-                'geometry': {
-                  'type': 'Point',
-                  'coordinates': [-122.411, 37.785]
-                }
-              }]
-            }
-          },
-          
-        'paint': {
-                'circle-radius': 5,
-                'circle-color': "yellow",
-                'circle-stroke-width': 1,
-                'circle-stroke-color': "black"
-              }
-            });
+  
     
     $(document).ready(function () {
       $.ajax({
