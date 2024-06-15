@@ -98,11 +98,42 @@
     var map = new mapboxgl.Map({
       container: 'map', // container id
       style: 'mapbox://styles/mapbox/light-v11', // YOUR TURN: choose a style: https://docs.mapbox.com/api/maps/#styles
-      center: [33.88863, 35.49548], // starting position [lng, lat]
+      center: [35.49548, 33.88863], // starting position [lng, lat]
       zoom: 8,// starting zoom
       transformRequest: transformRequest
     });
+// Define a yellow star image marker
+    map.loadImage(
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Yellow_star.svg/2000px-Yellow_star.svg.png',
+      function (error, image) {
+        if (error) throw error;
+        map.addImage('yellow-star', image);
 
+        // Add a layer for the marker
+        map.addLayer({
+          'id': 'marker',
+          'type': 'symbol',
+          'source': {
+            'type': 'geojson',
+            'data': {
+              'type': 'FeatureCollection',
+              'features': [{
+                'type': 'Feature',
+                'geometry': {
+                  'type': 'Point',
+                  'coordinates': [-122.411, 37.785]
+                }
+              }]
+            }
+          },
+          'layout': {
+            'icon-image': 'yellow-star',
+            'icon-size': 0.5
+          }
+        });
+      }
+    );
+    
     $(document).ready(function () {
       $.ajax({
         type: "GET",
