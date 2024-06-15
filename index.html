@@ -102,17 +102,11 @@
       zoom: 8,// starting zoom
       transformRequest: transformRequest
     });
-// Define a yellow star image marker
-    map.loadImage(
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Yellow_star.svg/2000px-Yellow_star.svg.png',
-      function (error, image) {
-        if (error) throw error;
-        map.addImage('yellow-star', image);
 
         // Add a layer for the marker
         map.addLayer({
           'id': 'marker',
-          'type': 'symbol',
+          'type': 'square',
           'source': {
             'type': 'geojson',
             'data': {
@@ -126,13 +120,15 @@
               }]
             }
           },
-          'layout': {
-            'icon-image': 'yellow-star',
-            'icon-size': 0.5
-          }
-        });
-      }
-    );
+          
+        'paint': {
+                'star-width': 5,
+          'star height': 5,
+                'square-color': "yellow",
+                'square-stroke-width': 1,
+                'square-stroke-color': "black"
+              }
+            });
     
     $(document).ready(function () {
       $.ajax({
