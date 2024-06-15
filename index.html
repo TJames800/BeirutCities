@@ -106,7 +106,7 @@
         // Add a layer for the marker
         map.addLayer({
           'id': 'marker',
-          'type': 'square',
+          'type': 'circle',
           'source': {
             'type': 'geojson',
             'data': {
@@ -122,11 +122,10 @@
           },
           
         'paint': {
-                'star-width': 5,
-          'star height': 5,
-                'square-color': "yellow",
-                'square-stroke-width': 1,
-                'square-stroke-color': "black"
+                'circle-radius': 5,
+                'circle-color': "yellow",
+                'circle-stroke-width': 1,
+                'circle-stroke-color': "black"
               }
             });
     
