@@ -156,14 +156,18 @@
 
         map.addLayer({
           'id': 'beirutMarker',
-          'type': 'symbol',
+          'type': 'circle',
           'source': 'beirutMarker',
           'layout': {
-            'icon-image': 'marker-15', // icon image from Mapbox library
-            'icon-allow-overlap': true
+            'source': {
+                'type': 'geojson',
+                'data': data
           },
           'paint': {
-            'icon-color': 'yellow'
+                'circle-radius': 5,
+                'circle-color': "yellow",
+                'circle-stroke-width': 1,
+                'circle-stroke-color': "black"
           }
         });
 
