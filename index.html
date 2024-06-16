@@ -140,7 +140,39 @@
                 'circle-stroke-color': "black"
               }
             });
+// Add Beirut Marker
+    map.on('load', function () {
+      var beirutMarker = {
+        'type': 'FeatureCollection',
+        'features': [{
+          'type': 'Feature',
+          'geometry': {
+            'type': 'Point',
+            'coordinates': [35.5018, 33.8938]
+          },
+          'properties': {
+            'title': 'Beirut',
+            'description': 'Capital of Lebanon'
+          }
+        }]
+      };
+       map.addSource('beirutMarker', {
+        'type': 'geojson',
+        'data': beirutMarker
+      });
 
+      map.addLayer({
+        'id': 'beirutMarker',
+        'type': 'circle',
+        'source': 'beirutMarker',
+        'paint': {
+          'circle-radius': 5,
+          'circle-color': 'yellow',
+          'circle-stroke-width': 1,
+          'circle-stroke-color': 'black'
+        }
+      });
+      
 
             // When a click event occurs on a feature in the csvData layer, open a popup at the
             // location of the feature, with description HTML from its properties.
